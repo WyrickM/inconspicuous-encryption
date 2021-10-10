@@ -51,7 +51,7 @@ const Encrypt = () => {
                             name="message"
                             style={{paddingTop: 15}}
                         >
-                            <Input />
+                            <Input.TextArea />
                         </Form.Item>
                         <Button type="primary">Encrypt</Button>
                     </Form>
