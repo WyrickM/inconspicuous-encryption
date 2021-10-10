@@ -1,18 +1,31 @@
 @import "~antd/dist/antd.css";
 
 .App {
-  text-align: center;
   background-color: #9fb6e286;
 }
 
 .App-navigation {
-  background-color: #051023;
+  background-color: #11274c;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* justify-content: center; */
   font-size: calc(20px + 2vmin);
-  font-size: large;
+  font-size: xx-large;
   color: white;
+}
+
+.main-content {
+  padding-top: 2vw;
+  padding-bottom: 1em;
+
+  height: 100%;
+  width: 100%;
+
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+.ant-menu-item-selected.customclass {
+  background-color: black !important;
 }
