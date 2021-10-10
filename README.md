@@ -1,10 +1,45 @@
-# Getting Started with Create React App
+# Inconspicuous Encryption
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Description
+This web application is a steganography encryption algorithm application. This is a term project for WSU CPTS 427 Intro to Computer Science Course.
 
-## Available Scripts
+### Installation Steps
 
-In the project directory, you can run:
+How to install required packages.
+1. For yarn
+    1. `npm install --global yarn` ([Link](https://classic.yarnpkg.com/lang/en/docs/install/#windows-stable) to documentation)
+2. If react is not present after calling npm install
+    1. `npm install react-scripts --save` ([Link](https://stackoverflow.com/questions/47928735/react-scripts-is-not-recognized-as-an-internal-or-external-command) for troubleshooting) 
+    2. You can also try `yarn add react` ([Link](https://classic.yarnpkg.com/lang/en/docs/cli/add/) for yarn react documentation)
+    
+3. For flask
+    1. got to the `react-backend`
+    2. run `source venv/Scripts/activate`
+    3. You should now be in a virtual environment
+    4. Within the virtual environment run `pip install Flask` ([Link](https://flask.palletsprojects.com/en/2.0.x/installation/) to flask documentation)
+4. For ant design
+    1. `yarn add antd` ([Link](https://ant.design/docs/react/use-in-typescript) to ant design documentation)
+5. For typescript
+    1. `npm install -g typescript` ([Link](https://www.typescriptlang.org/download) to typescript documentation)
+
+## Functionality
+
+1. Fork the repo
+2. If you want to change code and have vs code installed `code qpi-webapp`
+3. To run the webapp locally
+    1. Go inside the `qpi-webapp` folder
+    2. Go inside the `react-frontend` folder
+    3. To run the frontend:
+        1. `yarn start` <br>
+        **Note**: you can only run the backend to look at the UI and designs, but in order for functionality of the UI you need to run the backend as well <br>
+      
+    1. To run the backend:
+        1. open a new terminal
+        2. go to the `react-frontend` folder again
+        3. `yarn start-back` <br>
+        **Note**: You need to go to the frontend instead of the backend folder because the yarn script needs the `package.json` file
+
+
 
 ### `yarn start`
 
@@ -46,9 +81,3 @@ If you aren’t satisfied with the build tool and configuration choices, you can
 Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
