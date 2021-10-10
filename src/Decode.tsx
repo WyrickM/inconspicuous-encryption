@@ -1,4 +1,4 @@
-import { Button, Card, Form, Input, message, PageHeader, Typography, Upload } from "antd";
+import { Button, Card, message, PageHeader, Typography, Upload } from "antd";
 import * as React from "react";
 import { InboxOutlined } from '@ant-design/icons';
 
@@ -18,7 +18,7 @@ const Decrypt:React.FC = () => {
             }
             if(status === 'done')
             {
-                message.success('${info.file.name} file upload failed.');
+                message.success(`${info.file.name} file upload failed.`);
             }
         },
         onDrop(e: any) {
@@ -42,7 +42,9 @@ const Decrypt:React.FC = () => {
                         paddingBottom:15
                     }}
                 >
-                    Descritpion
+                    This page is where you will decrypt a message that is inside a picture so you can inconspicuosly hide
+                    a secret message. The after uploading an image, if there is an encrypted message that was encrypted with
+                    the Inconspicuous Encryption encryption algorithm the message will appear below.
                 </div>
                 <Card>
                     <Dragger {...props}>

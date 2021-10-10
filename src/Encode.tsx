@@ -19,7 +19,7 @@ const Encrypt:React.FC = () => {
             }
             if(status === 'done')
             {
-                message.success('${info.file.name} file upload failed.');
+                message.success(`${info.file.name} file upload failed.`);
             }
         },
         onDrop(e: any) {
@@ -43,7 +43,9 @@ const Encrypt:React.FC = () => {
                         paddingBottom:15
                     }}
                 >
-                    Description
+                    This page is where you will encrypt a message inside a picture so you can inconspicuosly hide
+                    a secret message. What seems to be an identical image of the one that was uploaded will be downloaded
+                    to your machine, but with your secret message. Then you can send your message securely no matter how you send messages.
                 </div>
                 <Card>
                     <Form>

@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React from 'react';
 import {Link, Redirect, Route, Switch, useLocation } from "react-router-dom";
 import { Layout, Menu, Typography } from 'antd';
 import * as Navigation from './navigatoin';
@@ -9,7 +9,7 @@ import Decrypt from './Decode';
 
 
 
-const App = () => {
+const App:React.FC = () => {
   const location = useLocation();
   const title = "Inconspicuous Encryption";
 
