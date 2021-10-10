@@ -19,11 +19,11 @@ const Home:React.FC = () => {
                         Inconspicuous Encryption is all about hiding in plain sight. With this application
                         you will be able to hide in plain sight. The ecryption process is called steganography.
                         It is the process of hiding information in objects without altering or changing the object 
-                        to the naked eye. With steganography you are able to encrypt and decrypt messages in pictures,
-                        videos, and audio. An advantage that steganography has over other encryption processes is that 
-                        other encryption processes tend to show an attacker that this message is encrypted, but with steganography 
-                        the information that there contains an encrypted message will be hidden to the naked eye of an attacker.
-                        The first recorded use of steganography was in 1499 by Johannes Trithemius, where Johannes 
+                        and having the changes visible to the naked eye. With steganography you are able to encrypt and
+                        decrypt messages in pictures, videos, and audio. An advantage that steganography has over other encryption
+                        processes is that other encryption processes tend to show an attacker that this message is encrypted,
+                        but with steganography the information that there contains an encrypted message will be hidden to the naked
+                        eye of an attacker. The first recorded use of steganography was in 1499 by Johannes Trithemius, where Johannes 
                         disguised a treatise on cryptography and steganography in a book about magic, titled 
                         <em> Steganographia</em>. <em>Steganographia</em> was not published until 1606.
                     </p>
