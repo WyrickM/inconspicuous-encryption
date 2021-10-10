@@ -14,6 +14,14 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
 
+### `yarn start-back`
+
+Runs the backend for the application in the development mode.\
+Open [http://localhost:5000](http://localhost:5000) to view it in the browser.
+
+The page will reload if you make edits.\
+You can also use print statements in the code and they will appear in the terminal.
+
 ### `yarn test`
 
 Launches the test runner in the interactive watch mode.\
