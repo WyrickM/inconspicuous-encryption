@@ -1,14 +1,12 @@
-import { Button, Card, Form, Input, message, PageHeader, Upload } from "antd";
+import { Button, Card, Form, Input, message, PageHeader, Typography, Upload } from "antd";
 import * as React from "react";
 import { InboxOutlined } from '@ant-design/icons';
-import { info } from "console";
-import { resolve } from "path";
-import { rejects } from "assert";
-import { file } from "@babel/types";
+
 
 const {Dragger} = Upload
+const {Title} = Typography
 
-const Encrypt = () => {
+const Encrypt:React.FC = () => {
 
     const props = {
         name: 'file',
@@ -31,7 +29,22 @@ const Encrypt = () => {
 
     return (
         <>
-            <PageHeader title="Encrypt" className="main-content">
+            <PageHeader
+                title= {
+                    <Title style={{fontSize: "50px"}}>
+                        Encrypt
+                    </Title>
+                }
+                className="main-content"
+            >
+                <div 
+                    style={{
+                        fontSize: "25px",
+                        paddingBottom:15
+                    }}
+                >
+                    Description
+                </div>
                 <Card>
                     <Form>
                         <Dragger {...props}>

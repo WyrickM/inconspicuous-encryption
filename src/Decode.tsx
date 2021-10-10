@@ -1,14 +1,11 @@
-import { Button, Card, Form, Input, message, PageHeader, Upload } from "antd";
+import { Button, Card, Form, Input, message, PageHeader, Typography, Upload } from "antd";
 import * as React from "react";
 import { InboxOutlined } from '@ant-design/icons';
-import { info } from "console";
-import { resolve } from "path";
-import { rejects } from "assert";
-import { file } from "@babel/types";
 
 const {Dragger} = Upload
+const {Title} = Typography
 
-const Decrypt = () => {
+const Decrypt:React.FC = () => {
 
     const props = {
         name: 'file',
@@ -31,7 +28,22 @@ const Decrypt = () => {
 
     return (
         <>
-            <PageHeader title="Decrypt" className="main-content">
+            <PageHeader
+                title= {
+                    <Title style= {{ fontSize: "50px" }}>
+                        Decrypt
+                    </Title>
+                }
+                className="main-content"
+            >
+                <div 
+                    style={{
+                        fontSize: "25px",
+                        paddingBottom:15
+                    }}
+                >
+                    Descritpion
+                </div>
                 <Card>
                     <Dragger {...props}>
                         <p className="ant-upload-drag-icon">
