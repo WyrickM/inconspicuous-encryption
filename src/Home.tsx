@@ -24,8 +24,8 @@ const Home:React.FC = () => {
                         other encryption processes tend to show an attacker that this message is encrypted, but with steganography 
                         the information that there contains an encrypted message will be hidden to the naked eye of an attacker.
                         The first recorded use of steganography was in 1499 by Johannes Trithemius, where Johannes 
-                        disguised a treatise on cryptography and steganography in a book about magic. The book was not published until
-                        1606.
+                        disguised a treatise on cryptography and steganography in a book about magic, titled 
+                        <em> Steganographia</em>. <em>Steganographia</em> was not published until 1606.
                     </p>
                     <p>
                         With Inconspicuous Encryption you will be encrypting and decrypting messages in images. Specifically 
