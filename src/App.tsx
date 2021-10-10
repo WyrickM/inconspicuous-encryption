@@ -39,7 +39,7 @@ const App = () => {
               selectedKeys={selectedMenuKeys(location.pathname)}
               style={{
                 background:"#11274c",
-                minHeight: "100vh",
+                minHeight: "90vh",
                 width:"100.5%"
               }}
             >
