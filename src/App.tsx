@@ -4,8 +4,8 @@ import { Layout, Menu, Typography } from 'antd';
 import * as Navigation from './navigatoin';
 import './App.css';
 import Home from './Home';
-import Encrypt from './Encode';
-import Decrypt from './Decode';
+import Encrypt from './Encrypt';
+import Decrypt from './Decrypt';
 
 
 
