@@ -10,6 +10,7 @@ from flask import Flask, jsonify, request
 
 app = Flask(__name__)
 
+
 def text_to_binary(message):
     """converts the user's inputed message to binary"""
     if isinstance(message) == str:
@@ -110,57 +111,35 @@ def save_file(image):
     file.close()
 
 
+def get_image(image):
+    image_data_list = image["file"]["thumbUrl"].split(",", 1)
+    base64_image = image_data_list[1]
+    base64_image_bytes = base64_image.encode("utf-8")
+    decoded_image_data = base64.decodebytes(base64_image_bytes)
+    temp_image = open(image["file"]["name"], "wb")
+    temp_image.write(decoded_image_data)
+    temp_image.close()
+
+def delete_temp_image(image):
+    
 
 @app.route("/", methods=["GET", "POST"])
-@app.route("/upload", methods=["POST"])
-# def upload_file():
-#     target = os.path.join(os.getcwd(), 'uploaded_image')
-#     print((os.getcwd())
-#     file = request.files['file']['file']
-#     print()
-#     print(file)
-#     print()
-#     return file
-
 @app.route("/encrypt/encrypt_message", methods=["POST"])
 def encrypt_message():
     """Encryption function that is called when button click on the frontend in the encrpyt page"""
     try:
         data = request.json
-        # image = upload_file()
         image = data.get("image")
         message = data.get("message")
+        get_image(image)
     except ValueError as error:
         logging.error(error)
         return str(error), HTTPStatus.BAD_REQUEST
 
 
-    print()
-    print(type(image))
-    print(message)
-    print()
-    print(type(image['file']['thumbUrl']))
-    print()
-    image_data_list = image['file']['thumbUrl'].split(",", 1)
-    temp_image = open(image['file']['name'], "wb")
-    temp_image.write(image_data_list[1].encode('ascii'))
-    temp_image.close()
-    # print(message)
-    print()
-    # image_name = os.path.abspath()
-    # save_path = os.getcwd()
-    # complete_name = os.path.join(save_path, image['file']['name'])
-    # file1 = open(complete_name, "w")
-    # print()
-    # image2 = cv2.imread(image_name)
-    # print("image 2: \n", image2)
-    # print()
-    # image.save(image['file']['name'])
-
     # encrypted_image = hide_message(image2, message)
     # save_file(encrypted_image)
     return ("Image saved!"), HTTPStatus.OK
-
 
 
 @app.route("/decrypt/decrypt_message", methods=["POST"])

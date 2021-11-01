@@ -19,11 +19,6 @@ const Encrypt:React.FC = () => {
 
     const onFinish = (items: EncryptFormData) => {
         setFormData(items);
-        // axios.post("http://localhost:3000/upload", formData?.image, {
-        //     // receive two: parameter endpoint url, formData.image
-        // }).then(res => {
-        //     console.log(res.statusText)
-        // });
         encrypt();
     }
     
@@ -102,7 +97,7 @@ const Encrypt:React.FC = () => {
                         <Form.Item name="image" required={true}>
                             <Dragger 
                                 name= 'file'
-                                accept=".jpg, .png, .pdf"
+                                accept=".jpg, .png"
                                 listType="picture"
                                 maxCount={1}
                                 onChange={(e) => {onChange(e);}}
@@ -116,7 +111,7 @@ const Encrypt:React.FC = () => {
                                     Click or drag image to this area to upload.
                                 </p>
                                 <p className="ant-upload-hint">
-                                    Support for a single upload. Supported files include .png, .jpg, or .pdf
+                                    Support for a single upload. Supported files include .png or .jpg
                                 </p>
                             </Dragger>
                         </Form.Item>
