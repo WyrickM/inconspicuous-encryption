@@ -89,6 +89,10 @@ const Decrypt:React.FC = () => {
                     This page is where you will decrypt a message that is inside a picture so you can inconspicuosly hide
                     a secret message. The after uploading an image, if there is an encrypted message that was encrypted with
                     the Inconspicuous Encryption encryption algorithm the message will appear below.
+                    <br/>
+                    <br/>
+                    NOTE: It is important to only try to decrypt messages that were encrypted using the Inconspicuous Encryption encryption algorithm.
+                    If the image has a secret message from a different steganography application it may not produce the proper message.
                 </div>
                 <Card>
                     <Form

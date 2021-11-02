@@ -88,6 +88,10 @@ const Encrypt:React.FC = () => {
                     This page is where you will encrypt a message inside a picture so you can inconspicuosly hide
                     a secret message. What seems to be an identical image of the one that was uploaded will be downloaded
                     to your machine, but with your secret message. Then you can send your message securely any way you desire.
+                    <br/>
+                    <br/>
+                    NOTE: The new image will be saved as a PNG file type no matter the given image type. This is because JPG files 
+                    are lossy formats. And it is important to not lose any bits since they hold the secret message.
                 </div>
 
                 <Card>
