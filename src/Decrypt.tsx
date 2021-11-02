@@ -1,11 +1,25 @@
-import { Button, Card, message, PageHeader, Typography, Upload } from "antd";
+import { Button, Card, Form, message, PageHeader, Typography, Upload } from "antd";
 import * as React from "react";
 import { InboxOutlined } from '@ant-design/icons';
+import {decryptMessage} from "./EncryptDecrypt";
+
 
 const {Dragger} = Upload
 const {Title} = Typography
 
+interface DecryptFormData {
+    image: File;
+}
+
 const Decrypt:React.FC = () => {
+
+    const [formData, setFormData] = React.useState<DecryptFormData | undefined>(undefined);
+    const [decryptedMessage, setDecryptedMessage] = React.useState<string | undefined>(undefined);
+
+    const onFinish = (items: DecryptFormData) => {
+        setFormData(items);
+        decrypt();
+    }
 
     const onChange = (info: any) => {
         const {status} = info.file;
@@ -37,6 +51,25 @@ const Decrypt:React.FC = () => {
         imgWindow?.document.write(image.outerHTML);
     };
 
+    const decrypt = async () => {
+        if(formData !== undefined)
+        {
+            const r = await decryptMessage(
+                formData.image
+            );
+            if(r.status >= 400) {
+                const text = await r.text();
+                message.error(`Decrypting the image failed: ${text}`);
+            }
+            else {
+                const json = await r.json();
+                setDecryptedMessage(json.decryptedMessage)
+                message.success("Decrypting the image succeeded!");
+            }
+        }
+    }
+
+
     return (
         <>
             <PageHeader
@@ -58,34 +91,50 @@ const Decrypt:React.FC = () => {
                     the Inconspicuous Encryption encryption algorithm the message will appear below.
                 </div>
                 <Card>
-                    <Dragger 
-                        name= 'file'
-                        accept=".jpg, .png, .pdf"
-                        listType="picture"
-                        maxCount={1}
-                        onChange={(e) => {onChange(e);}}
-                        onDrop={(e) => {onDrop(e);}}
-                        onPreview={(file) => {onPreview(file);}}
+                    <Form
+                        onFinish={(items) => {onFinish(items)}}
                     >
-                        <p className="ant-upload-drag-icon">
-                            <InboxOutlined />
-                        </p>
-                        <p className="ant-upload-text">
-                            Click or drag image to this area to upload.
-                        </p>
-                        <p className="ant-upload-hint">
-                            Support for a single upload. Supported files include .png, .jpg, or .pdf
-                        </p>
-                    </Dragger>
-                    <div
-                        style={{paddingTop: 15}}
-                    >
-                    <Button 
-                        type="primary"
-                    >
-                        Decrypt
-                    </Button>
-                    </div>
+                        <Form.Item name="image" required={true}>
+                            <Dragger 
+                                name= 'file'
+                                accept=".jpg, .png"
+                                listType="picture"
+                                maxCount={1}
+                                onChange={(e) => {onChange(e);}}
+                                onDrop={(e) => {onDrop(e);}}
+                                onPreview={(file) => {onPreview(file);}}
+                            >
+                                <p className="ant-upload-drag-icon">
+                                    <InboxOutlined />
+                                </p>
+                                <p className="ant-upload-text">
+                                    Click or drag image to this area to upload.
+                                </p>
+                                <p className="ant-upload-hint">
+                                    Support for a single upload. Supported files include .png or .jpg
+                                </p>
+                            </Dragger>
+                        </Form.Item>
+                        <Form.Item>
+                            <Button 
+                                type="primary"
+                                htmlType="submit"
+                            >
+                                Decrypt
+                            </Button>
+                        </Form.Item>
+                    </Form>
+                    {decryptedMessage ? (
+                        <div>
+                            <p>
+                            The decrypted message is:
+                            </p>
+                            <p>
+                                {decryptedMessage}
+                            </p>
+                        </div>
+                        
+                    ): null}
                 </Card>
             </PageHeader>
         </>

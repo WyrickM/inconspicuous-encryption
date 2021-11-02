@@ -1,5 +1,4 @@
 import * as React from "react";
-import axios from 'axios';
 import { Button, Card, Form, Input, message, PageHeader, Typography, Upload } from "antd";
 import { InboxOutlined  } from '@ant-design/icons';
 import {encryptMessage} from "./EncryptDecrypt";
@@ -62,10 +61,9 @@ const Encrypt:React.FC = () => {
             );
             if(r.status >= 400) {
                 const text = await r.text();
-                message.error("Encrypting the image failed");
+                message.error(`Encrypting the image failed: ${text}` );
             }
             else {
-                const json = await r.json();
                 message.success("Encryting the image succeeded!");
             }
         }

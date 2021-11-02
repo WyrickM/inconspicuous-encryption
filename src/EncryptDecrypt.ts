@@ -15,9 +15,12 @@ export const encryptMessage = async (
 };
 
 export const decryptMessage = async (
+    image: File
 ): Promise<Response> => {
     return postWithURLAndBody(
         "/decrypt/decrypt_message",
-        {}
+        {
+            image,
+        }
     );
 };

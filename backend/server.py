@@ -41,15 +41,17 @@ def hide_message(image, message):
 
     data_index = 0
     data_length = len(binary_message)
-    for value in image:
-        for pixel in value:
+    for values in image:
+        for pixel in values:
             # converting RGB values to binary
             red, green, blue = text_to_binary(pixel)
 
             # modify the least significant bit
             if data_index < data_length:
                 # hide the data into least significant bit of red pixel
+                # print("pixel 0 before mod", pixel[0], "\n")
                 pixel[0] = int(red[:-1] + binary_message[data_index], 2)
+                # print("pixel 0", pixel[0], "\n")
                 data_index += 1
             if data_index < data_length:
                 # hide the data into least significant bit of green pixel
@@ -63,6 +65,7 @@ def hide_message(image, message):
             # if all data is encoded, break loop
             if data_index >= data_length:
                 break
+
 
     return image
 
@@ -93,16 +96,19 @@ def show_message(image):
             break
 
     # backend check to test if done properly
-    print("\n\n", decrypted_message, "\n\n")
+    # print("\n\n", "Decrypted message: \n", decrypted_message, "\n\n")
 
     return decrypted_message[:-5]  # removing delimeter
 
 
-def save_file(image, file_type):
+def save_file(image):
     """opens the typical save dialog box to save the encrypted image"""
     # give the new image a name, notifying user that this is the new image and to change the name
-    file_name = "Secret_Message_CHANGE_NAME" + file_type
+    # must save as .png since .jpg files are sloppy with their bits
+    # with .jpg bits were not saving and loading properly, thus need to save as png
+    file_name = "Secret_Message_CHANGE_NAME.png"
     cv2.imwrite(file_name, image)
+
 
 
 def get_image(image):
@@ -149,16 +155,29 @@ def encrypt_message():
         logging.error(error)
         return str(error), HTTPStatus.BAD_REQUEST
 
-
-    # get the temp image and file type
+    # get the temp image
     temp_image = cv2.imread(image_name)
-    image_file_type = image_name[-4:]
 
     # encrypt the message into the image
     encrypted_image = hide_message(temp_image, message)
 
+    # checks the bits after the encryption algorithm but before the save
+    # list_of_strings = text_to_binary(encrypted_image.tostring())
+    # file_string = ' '.join([str(item) for item in list_of_strings])
+    # temp_image = open("encrypted_message.txt", "w")
+    # temp_image.write(file_string)
+    # temp_image.close()
+
     # save the new image that has encrypted message
-    save_file(encrypted_image, image_file_type)
+    save_file(encrypted_image)
+
+    # checks the bits after the encrypted image has been save
+    # encrypted_image = cv2.imread("Secret_Message_CHANGE_NAME.png")
+    # list_of_strings = text_to_binary(encrypted_image.tostring())
+    # file_string = ' '.join([str(item) for item in list_of_strings])
+    # temp_image = open("Secret_Message.txt", "w")
+    # temp_image.write(file_string)
+    # temp_image.close()
 
     # delete the temporary image
     delete_temp_image(image)
@@ -181,14 +200,22 @@ def decrypt_message():
         return str(error), HTTPStatus.BAD_REQUEST
 
     # get temp steganography image
-    temp_image = cv2.imread(image_name)
+    secret_image = cv2.imread(image_name)
+
+    # checks the binary code of the uploaded file, file should be steganography generate image from same code
+    # list_of_strings = text_to_binary(secret_image.tostring())
+    # file_string = ' '.join([str(item) for item in list_of_strings])
+    # temp_image = open("decrypted_message.txt", "w")
+    # temp_image.write(file_string)
+    # temp_image.close()
 
     # decrypt the message from the image
-    decrypted_message = show_message(temp_image)
+    decrypted_message = show_message(secret_image)
 
-    print("Decrypted message: ", decrypted_message)
+    # delete the temporary image
+    delete_temp_image(image)
 
-    return (jsonify({"message": decrypted_message}), HTTPStatus.OK)
+    return (jsonify({"decryptedMessage": decrypted_message}), HTTPStatus.OK)
 
 
 if __name__ == "__main__":
