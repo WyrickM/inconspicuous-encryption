@@ -29,7 +29,7 @@ const Home:React.FC = () => {
                     </p>
                     <p>
                         With Inconspicuous Encryption you will be encrypting and decrypting messages in images. Specifically 
-                        .jpg, .png, and .pdf images. 
+                        .jpg and .png images. 
                     </p>
                     <p>
                         It is important to note that if someone really wanted to know your secret message that you are sending
