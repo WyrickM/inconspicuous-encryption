@@ -22,9 +22,9 @@ How to install required packages.
 5. For typescript
     1. `npm install -g typescript` ([Link](https://www.typescriptlang.org/download) to typescript documentation)
 6. Need cv2 library
-    1. pip install opencv-python
+    1. `pip install opencv-python`
 7. Need tkinter library
-    1. sudo apt-get install python3-tk
+    1. `sudo apt-get install python3-tk`
 
 ## Functionality
 
