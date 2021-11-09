@@ -14,7 +14,7 @@ How to install required packages.
     
 3. For flask
     1. got to the `backend`
-    2. run `source venv/Scripts/activate`
+    2. run `source venv/bin/activate`
     3. You should now be in a virtual environment
     4. Within the virtual environment run `pip install Flask` ([Link](https://flask.palletsprojects.com/en/2.0.x/installation/) to flask documentation)
 4. For ant design
