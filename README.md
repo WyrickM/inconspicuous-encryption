@@ -13,7 +13,7 @@ How to install required packages.
     2. You can also try `yarn add react` ([Link](https://classic.yarnpkg.com/lang/en/docs/cli/add/) for yarn react documentation)
     
 3. For flask
-    1. got to the `react-backend`
+    1. got to the `backend`
     2. run `source venv/Scripts/activate`
     3. You should now be in a virtual environment
     4. Within the virtual environment run `pip install Flask` ([Link](https://flask.palletsprojects.com/en/2.0.x/installation/) to flask documentation)
