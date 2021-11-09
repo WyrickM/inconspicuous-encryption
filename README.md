@@ -25,19 +25,17 @@ How to install required packages.
 ## Functionality
 
 1. Fork the repo
-2. If you want to change code and have vs code installed `code qpi-webapp`
+2. If you want to change code and have vs code installed `code inconspicuous-encryption`
 3. To run the webapp locally
-    1. Go inside the `qpi-webapp` folder
-    2. Go inside the `react-frontend` folder
+    1. Go inside the `inconspicuous-encryption` folder
     3. To run the frontend:
         1. `yarn start` <br>
         **Note**: you can only run the backend to look at the UI and designs, but in order for functionality of the UI you need to run the backend as well <br>
       
     1. To run the backend:
         1. open a new terminal
-        2. go to the `react-frontend` folder again
+        2. go to the `inconspicuous-encryption` folder again
         3. `yarn start-back` <br>
-        **Note**: You need to go to the frontend instead of the backend folder because the yarn script needs the `package.json` file
 
 
 
