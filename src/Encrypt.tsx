@@ -16,10 +16,6 @@ interface EncryptFormData {
 const Encrypt: React.FC = () => {
     const [formData, setFormData] = React.useState<EncryptFormData | undefined>(undefined);
 
-    const onFinish = (items: EncryptFormData) => {
-        setFormData(items);
-        encrypt();
-    }
 
     const onChange = (info: any) => {
         const { status } = info.file;
@@ -50,27 +46,24 @@ const Encrypt: React.FC = () => {
         imgWindow?.document.write(image.outerHTML);
     };
 
-    const encrypt = async () => {
-
-        if (formData !== undefined) {
-            const r = await encryptMessage(
-                formData.image,
-                formData.message
-            );
-            if (r.status >= 400) {
-                const text = await r.text();
-                message.error(`Encrypting the image failed: ${text}`);
-            }
-            else {
-                message.success("Encryting the image succeeded!");
-            }
-        }
-    };
-
     React.useEffect(() => {
-        onFinish(formData!);
+        const encrypt = async () => {
+            if (formData !== undefined) {
+                const r = await encryptMessage(
+                    formData.image,
+                    formData.message
+                );
+                if (r.status >= 400) {
+                    const text = await r.text();
+                    message.error(`Encrypting the image failed: ${text}`);
+                }
+                else {
+                    message.success("Encryting the image succeeded!");
+                }
+            }
+        };
+        encrypt();
     }, [formData]);
-
 
     return (
         <>
@@ -98,7 +91,7 @@ const Encrypt: React.FC = () => {
                 </div>
 
                 <Card>
-                    <Form onFinish={(items) => { onFinish(items) }}>
+                    <Form onFinish={(items) => { setFormData(items) }}>
                         <Form.Item name="image" required={true}>
                             <Dragger
                                 name='file'

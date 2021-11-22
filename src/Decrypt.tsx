@@ -16,11 +16,6 @@ const Decrypt: React.FC = () => {
     const [formData, setFormData] = React.useState<DecryptFormData | undefined>(undefined);
     const [decryptedMessage, setDecryptedMessage] = React.useState<string | undefined>(undefined);
 
-    const onFinish = (items: DecryptFormData) => {
-        setFormData(items);
-        decrypt();
-    }
-
     const onChange = (info: any) => {
         const { status } = info.file;
         if (status !== 'uploading') {
@@ -50,25 +45,24 @@ const Decrypt: React.FC = () => {
         imgWindow?.document.write(image.outerHTML);
     };
 
-    const decrypt = async () => {
-        if (formData !== undefined) {
-            const r = await decryptMessage(
-                formData.image
-            );
-            if (r.status >= 400) {
-                const text = await r.text();
-                message.error(`Decrypting the image failed: ${text}`);
-            }
-            else {
-                const json = await r.json();
-                setDecryptedMessage(json.decryptedMessage)
-                message.success("Decrypting the image succeeded!");
-            }
-        }
-    }
-
     React.useEffect(() => {
-        onFinish(formData!);
+        const decrypt = async () => {
+            if (formData !== undefined) {
+                const r = await decryptMessage(
+                    formData.image
+                );
+                if (r.status >= 400) {
+                    const text = await r.text();
+                    message.error(`Decrypting the image failed: ${text}`);
+                }
+                else {
+                    const json = await r.json();
+                    setDecryptedMessage(json.decryptedMessage)
+                    message.success("Decrypting the image succeeded!");
+                }
+            }
+        };
+        decrypt();
     }, [formData]);
 
 
@@ -98,7 +92,7 @@ const Decrypt: React.FC = () => {
                 </div>
                 <Card>
                     <Form
-                        onFinish={(items) => { onFinish(items) }}
+                        onFinish={(items) => { setFormData(items) }}
                     >
                         <Form.Item name="image" required={true}>
                             <Dragger
