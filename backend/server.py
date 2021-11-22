@@ -108,13 +108,11 @@ def save_file(image):
     # must save as .png since .jpg files are sloppy with their bits
     # with .jpg bits were not saving and loading properly, thus need to save as png
     
-    # saves the image to the Downloads folder if one exists where the project folder
-    # is located
+    # saves the image to the main inconspicuous-encryption folder
     file_name = "Secret_Message_CHANGE_NAME.png"
-    downloads_path = str(Path.home() / "Downloads")
-    print("\n", downloads_path, "\n")
+    parent_path = os.path.dirname(os.getcwd())
 
-    cv2.imwrite(os.path.join(downloads_path, file_name), image)
+    cv2.imwrite(os.path.join(parent_path, file_name), image)
 
 
 
