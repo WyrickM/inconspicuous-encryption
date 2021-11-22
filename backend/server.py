@@ -5,6 +5,7 @@ import json
 import os
 from http import HTTPStatus
 from tkinter import filedialog
+from pathlib import Path
 
 import numpy as np
 from flask import Flask, jsonify, request
@@ -106,8 +107,15 @@ def save_file(image):
     # give the new image a name, notifying user that this is the new image and to change the name
     # must save as .png since .jpg files are sloppy with their bits
     # with .jpg bits were not saving and loading properly, thus need to save as png
+    
+    # saves the image to the Downloads folder if one exists where the project folder
+    # is located
     file_name = "Secret_Message_CHANGE_NAME.png"
-    cv2.imwrite(file_name, image)
+    downloads_path = str(Path.home() / "Downloads")
+    print("\n", downloads_path, "\n")
+
+    cv2.imwrite(os.path.join(downloads_path, file_name), image)
+
 
 
 
